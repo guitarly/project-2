@@ -11,42 +11,42 @@
                         <form class="" action="/users/register" method="post">
                             <fieldset>
 
-                                <div class="control-group">
+                                <div class=" input-group col-md-12 center-div">
                                     <!-- Username -->
-                                    <label class="control-label" for="username">Name</label>
-                                    <div class="controls">
-                                        <input type="text" id="name" name="name" placeholder="" class="input-xlarge" required>
-                                        <p class="help-block"></p>
-                                    </div>
+                                    <span class="input-group-addon ">Name:</span>
+                                    <input id="name" type="text " class="form-control " name="name" placeholder="Name " required />
                                 </div>
+                                <br>
+                                <div class=" input-group col-md-12 center-div">
+                                    <span class="input-group-addon ">Role:</span>
+                                    <select class="form-control " name="role" placeholder="Select user role" required />
+                                    <option value=""></option>
+                                    <option value="PM">Project Manager</option>
+                                    <option value="Tester">Tester</option>
+                                    <option value="Developer">
+                                        Developer</option>
 
-                                <div class="control-group">
+                                    </select>
+                                </div>
+                                <br>
+                                <div class=" input-group col-md-12 center-div">
                                     <!-- Username -->
-                                    <label class="control-label" for="username">Username</label>
-                                    <div class="controls">
-                                        <input type="text" id="username" name="username" placeholder="" class="input-xlarge" required>
-                                        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
-                                    </div>
+                                    <span class="input-group-addon ">Username:</span>
+                                    <input id="username" type="text " class="form-control " name="username" placeholder="Enter username " required />
                                 </div>
-
-                                <div class="control-group">
-                                    <!-- Password-->
-                                    <label class="control-label" for="password">Password</label>
-                                    <div class="controls">
-                                        <input type="password" id="password" name="password" placeholder="" class="input-xlarge" required>
-                                        <p class="help-block">Password should be at least 4 characters</p>
-                                    </div>
+                                <br>
+                                <div class=" input-group col-md-12 center-div">
+                                    <!-- Username -->
+                                    <span class="input-group-addon ">Password:</span>
+                                    <input id="password" type="password " class="form-control " name="password" placeholder="Enter password " required />
                                 </div>
-
-                                <div class="control-group">
-                                    <!-- Password -->
-                                    <label class="control-label" for="password_confirm">Password (Confirm)</label>
-                                    <div class="controls">
-                                        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge" required>
-                                        <p class="help-block">Please confirm password</p>
-                                    </div>
+                                <br>
+                                <div class=" input-group col-md-12 center-div">
+                                    <!-- Username -->
+                                    <span class="input-group-addon ">Password (Confirm):</span>
+                                    <input id="password_confirm" type="password " class="form-control " name="password_confirm" placeholder="Password Confirm " required />
                                 </div>
-
+                                <br>
                                 <div class="control-group">
                                     <div class="controls">
                                         <button class="btn btn-success">Register</button>
