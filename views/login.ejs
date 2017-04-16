@@ -1,6 +1,6 @@
 <%- contentFor('login') %>
 
-    <div class="container homepage_image">
+    <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2" style="margin-top: 5%">
                 <div class="panel panel-default">
@@ -9,7 +9,7 @@
                     </div>
                     <div class="panel-body">
                         <!-- <form class="form-horizontal" role="form" action="/login" method="POST"> -->
-                        <form action="/login" method="POST">
+                        <form action="/users/login" method="POST">
                             <div class="form-group">
                                 <label for="username" class="col-sm-5 control-label">User Name:</label>
                                 <div class="col-sm-9">
@@ -30,8 +30,11 @@
                                     </div>
                                 </div> -->
                             </div>
+                            <br>
                             <div class="form-group last">
+
                                 <div class="col-sm-offset-3 col-sm-9">
+                                    <br />
                                     <button type="submit" class="btn btn-success btn-sm">Sign in</button>
                                     <button type="reset" class="btn btn-default btn-sm">Reset</button>
                                 </div>
