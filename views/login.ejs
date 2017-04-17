@@ -1,5 +1,6 @@
 <%- contentFor('login') %>
 
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2" style="margin-top: 5%">
@@ -10,14 +11,14 @@
                     <div class="panel-body">
                         <!-- <form class="form-horizontal" role="form" action="/login" method="POST"> -->
                         <form action="/users/login" method="POST">
-                            <div class=" input-group col-md-8 center-div">
+                            <div class=" input-group col-md-12 center-div">
                                 <span class="input-group-addon ">User Name:</span>
                                 <input id="username" type="text " class="form-control " name="username" placeholder="User Name " required />
                             </div>
                             <br />
-                            <div class=" input-group col-md-8 center-div">
+                            <div class=" input-group col-md-12 center-div">
                                 <span class="input-group-addon ">Password:</span>
-                                <input id="inputpassword " type="text " class="form-control" placeholder="Password" required />
+                                <input id="inputpassword " type="password" class="form-control" placeholder="Password" required name="password" />
                             </div>
 
                             <br>
@@ -31,7 +32,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="panel-footer">Not Registered? <a href="/user/new" class="">Register here</a>
+                    <div class="panel-footer">Not Registered? <a href="/users/register" class="">Register here</a>
                     </div>
                 </div>
             </div>

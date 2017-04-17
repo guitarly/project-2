@@ -28,6 +28,15 @@ app.use(expresslayouts);
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+// Express session
+app.use(session({
+    secret: 'dsafadsfdsfewr2342sdfs',
+    saveUninitialized: false,
+    resave: false
+}));
+
+
 app.use(methodOverride('_method'));
 
 mongoose.connect('mongodb://localhost:27017/ProjectTasks');
@@ -39,12 +48,6 @@ mongoose.connection.once('open', function() {
     });
 });
 
-// Express session
-app.use(session({
-    secret: 'dsafadsfdsfewr2342sdfs',
-    saveUninitialized: true,
-    resave: true
-}));
 
 // Passport init
 app.use(passport.initialize());
@@ -74,10 +77,10 @@ app.use(function(req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.session.user;
+
     next();
 });
-
-
 
 app.use('/', index);
 app.use('/users', userController);
