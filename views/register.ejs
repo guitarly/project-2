@@ -6,6 +6,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"> <strong class="">Register </strong>
 
+                        <% if(errors) { %>
+                            <% for(var i = 0; i < errors.length; i++)  { %>
+                                <div class="alert alert-danger">
+                                    <p>
+                                        <%= errors[i].msg %>
+                                    </p>
+                                </div>
+                                <% } %>
+                                    <%  } %>
+
+
                     </div>
                     <div class="panel-body">
                         <form class="" action="/users/register" method="post">
@@ -38,13 +49,13 @@
                                 <div class=" input-group col-md-12 center-div">
                                     <!-- Username -->
                                     <span class="input-group-addon ">Password:</span>
-                                    <input id="password" type="password " class="form-control " name="password" placeholder="Enter password " required />
+                                    <input id="password" type="password" class="form-control " name="password" placeholder="Enter password " required />
                                 </div>
                                 <br>
                                 <div class=" input-group col-md-12 center-div">
                                     <!-- Username -->
                                     <span class="input-group-addon ">Password (Confirm):</span>
-                                    <input id="password_confirm" type="password " class="form-control " name="password_confirm" placeholder="Password Confirm " required />
+                                    <input id="password_confirm" type="password" class="form-control " name="password_confirm" placeholder="Password Confirm " required />
                                 </div>
                                 <br>
                                 <div class="control-group">

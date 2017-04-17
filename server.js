@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expresslayouts = require('express-ejs-layouts');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
 // -- testing...
 // var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
