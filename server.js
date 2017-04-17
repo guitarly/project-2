@@ -16,7 +16,10 @@ var localStrategy = require('passport-local').
 Strategy;
 // ---
 
-var port = 3001;
+// var port = 3001;
+// var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectTasks';
 
 var index = require('./controllers/index.js');
 var userController = require('./controllers/userController.js');
@@ -39,11 +42,11 @@ app.use(session({
 
 app.use(methodOverride('_method'));
 
-mongoose.connect('mongodb://localhost:27017/ProjectTasks');
+mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
     console.log("connect to mongo");
     app.listen(port, function() {
-        console.log('listening....', port);
+        console.log('listening....');
 
     });
 });
