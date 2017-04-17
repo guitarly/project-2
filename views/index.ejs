@@ -4,11 +4,12 @@
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
         <ul class="nav navbar-nav navbar-left">
             <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
-            <% if(currentUser.role === 'PM') { %>
-                <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li>
-                <% } %>
+            <%=currentUser.role%>
+                <% if(currentUser.role === 'Project Manager') { %>
+                    <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li>
+                    <% } %>
 
-                    <!-- <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li> -->
-                    <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
+                        <!-- <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li> -->
+                        <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
         </ul>
     </nav>

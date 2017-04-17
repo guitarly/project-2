@@ -1,0 +1,48 @@
+<%- contentFor('new-task') %>
+
+    <h1>Create new Task</h1>
+
+    <form class="form-group" method="post" action="/tasks/new">
+        <!-- <div class=" input-group col-md-4 center-div">
+            <span class="input-group-addon ">User:</span>
+            <input id="msg " type="text " class="form-control " name="username" placeholder="User Name " required />
+        </div> -->
+        <div class=" input-group col-md-12 center-div">
+
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Task Title:      </span>
+                <input id="img" type="text" class="form-control " name="title" required />
+            </div>
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">User:</span>
+                <select class="form-control " name="userid" placeholder="User Name " />
+                <option value=""></option>
+                <% for(var i =0; i < users.length; i++) { %>
+
+                    <option value="<%=users[i].id%>">
+                        <%=users[i].name%>
+                    </option>
+                    <% } %>
+
+                        </select>
+            </div>
+
+
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Description:</span>
+                <textarea rows="4" type="text" name="description" id="description" class="form-control "> </textarea>
+            </div>
+
+
+            <br>
+
+        </div>
+
+
+        <br>
+        <div class=" input-group col-md-6 center-div">
+            <button type="submit " class="btn btn-primary ">Submit</button>
+            <a href="/tasks" class="btn btn-warning" style="margin-left: 2%">Cancel</a>
+
+        </div>
+    </form>
