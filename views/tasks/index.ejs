@@ -16,37 +16,35 @@
         </ul>
     </nav>
 
-    <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <h2>Task Assignments</h2>
-        <ul class="nav navbar-nav navbar-left">
-            <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
-            <%=currentUser.role%>
 
-                        <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
-        </ul>
-    </nav> -->
+    <!-- show all tasks here.. -->
+    <div class="row table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Task Title:</th>
+                    <th>Description:</th>
+                    <th>Status:</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <div class="row">
-        <% for(var i =0; i < tasks.length; i++) { %>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="/tasks/show/<%=tasks[i].id; %>">
+                <% for(var i =0; i < tasks.length; i++) { %>
+                    <tr>
+                        <td>
 
-                        <div class="caption">
-                            <p>Title:
+                            <a href="/tasks/show/<%=tasks[i].id; %>">
                                 <%=tasks[i].title;%>
-                            </p>
-
-                            <p>Description:
-                                <%=tasks[i].description;%>
-                            </p>
-                            <br>
-
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <% } %>
-
+                            </a>
+                        </td>
+                        <td>
+                            <%=tasks[i].description;%>
+                        </td>
+                        <td>
+                            <%=tasks[i].status %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
     </div>

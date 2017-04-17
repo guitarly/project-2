@@ -6,7 +6,7 @@ var methodOverride = require('method-override');
 var expresslayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var bcrypt = require('bcrypt');
-// -- testing...
+
 // var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
@@ -16,10 +16,10 @@ var localStrategy = require('passport-local').
 Strategy;
 // ---
 
-// var port = 3001;
-// var port = process.env.PORT || 3000;
-var port = process.env.PORT || 3000;
-var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectTasks';
+var port = 3001;
+var mongoDBURI = "mongodb://localhost:27017/ProjectTasks";
+// var port = process.env.PORT || 3001;
+// var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectTasks';
 
 var index = require('./controllers/index.js');
 var userController = require('./controllers/userController.js');

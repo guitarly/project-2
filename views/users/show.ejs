@@ -36,26 +36,42 @@
         </nav>
 
         <!-- show all tasks here.. -->
-        <div class="row">
-            <% for(var i =0; i < user.tasks.length; i++) { %>
-                <!-- <div class="col-md-4"> -->
-                <!-- <div class="thumbnail"> -->
-                <a href="/tasks/show/<%=user.tasks[i].id; %>">
-                    <%= user.tasks[i].title %>
-                </a>
-                <% } %>
+        <div class="row table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Task Title:</th>
+                        <th>Description:</th>
+                        <th>Status:</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                    <% for(var i =0; i < user.tasks.length; i++) { %>
+                        <tr>
+                            <td>
 
-        </div>
+                                <a href="/tasks/show/<%=user.tasks[i].id; %>">
+                                    <%= user.tasks[i].title %>
+                                </a>
+                            </td>
+                            <td>
+                                <%= user.tasks[i].description %>
+                            </td>
+                            <td>
+                                <%= user.tasks[i].status %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <br>
+            <div class="col-md-12 text-center">
+                <form action="/user/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
+                    <input class="btn btn-md btn-danger " type="submit" value="Delete User">
+                </form>
 
-
-
-        <br>
-        <div class="col-md-12 text-center">
-            <form action="/user/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
-                <input class="btn btn-md btn-danger " type="submit" value="Delete User">
-            </form>
-
+            </div>
         </div>
 
     </div>

@@ -19,19 +19,38 @@
         <br>
 
         <br />
-        <div class="row">
-            <ul class="list-group">
-                <% for(var i = 0; i < users.length; i++) { %>
-                    <li class="list-group-item col-md-6 col-md-offset-3">
-                        <a href="/users/show/<%=users[i].id; %>">
-                            <%=users[i].name%>
-                        </a>
-                        <br/>
 
-                    </li>
 
-                    <% } %>
-            </ul>
+        <div class="row table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name:</th>
+                        <th>Role:</th>
+                        <th>No. Tasks:</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for(var i = 0; i < users.length; i++) { %>
+                        <tr>
+                            <td>
+
+                                <a href="/users/show/<%=users[i].id; %>">
+                                    <%=users[i].name%>
+                                </a>
+                            </td>
+                            <td>
+                                <%=users[i].role%>
+                            </td>
+                            <td>
+                                <%=users[i].tasks.length%>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
 
         </div>
+
     </div>
