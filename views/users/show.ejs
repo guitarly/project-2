@@ -3,11 +3,12 @@
     <div class="container">
         <div class="text-center">
 
-            <h2>Developer: <%= currentUser.name %></h2>
+            <h2>Developer: <%= user.name %></h2>
         </div>
 
 
-        <nav class="navbar nav-photo">
+
+        <!-- <nav class="navbar nav-photo">
             <ul class="nav navbar-nav">
                 <a class="btn btn-md btn-primary" href="/users/edit/<%=user.id; %>">Edit User Infomation</a>
             </ul>
@@ -17,9 +18,35 @@
 
 
             </ul>
+        </nav> -->
+
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li id="menu-new">
+                    <a href="/users/edit/<%=user.id; %>"><span class="glyphicon glyphicon-user"></span>Edit User Infomation</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+
+
+            </ul>
         </nav>
 
         <!-- show all tasks here.. -->
+        <div class="row">
+            <% for(var i =0; i < user.tasks.length; i++) { %>
+                <!-- <div class="col-md-4"> -->
+                <!-- <div class="thumbnail"> -->
+                <a href="/tasks/show/<%=user.tasks[i].id; %>">
+                    <%= user.tasks[i].title %>
+                </a>
+                <% } %>
+
+
+        </div>
 
 
 
