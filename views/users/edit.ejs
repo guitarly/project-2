@@ -1,0 +1,21 @@
+<%- contentFor('store-edit-user') %>
+    <h1>Edit User</h1>
+
+    <div class="row text-center ">
+        <form class="" action="/user/<%=user.id%>?_method=PUT" method="POST">
+            <div class=" input-group col-md-4 center-div">
+                <span class="input-group-addon ">User Name:</span>
+                <input id="msg " type="text " class="form-control " name="username" placeholder="User Name " required value="<%=user.username%>" />
+            </div>
+
+            <div class=" input-group col-md-4 center-div">
+                <span class="input-group-addon ">Password:      </span>
+                <input id="password" type="password" class="form-control " name="password" required value="<%=user.password%>" />
+            </div>
+            <br>
+            <button type="submit " class="btn btn-primary ">Save</button>
+            <a href="/user" class="btn btn-warning ">Cancel</a>
+
+
+        </form>
+    </div>

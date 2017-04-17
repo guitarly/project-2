@@ -1,0 +1,38 @@
+<%- contentFor('display-all-users') %>
+
+    <h1>Developers</h1>
+
+    <div class="container ">
+
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <ul class="nav navbar-nav navbar-left">
+
+                <% if(currentUser.role === 'PM') { %>
+                    <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li>
+                    <% } %>
+
+                        <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
+            </ul>
+
+        </nav>
+
+
+        <br>
+
+        <br />
+        <div class="row">
+            <ul class="list-group">
+                <% for(var i = 0; i < users.length; i++) { %>
+                    <li class="list-group-item col-md-6 col-md-offset-3">
+                        <a href="/users/show/<%=users[i].id; %>">
+                            <%=users[i].name%>
+                        </a>
+                        <br/>
+
+                    </li>
+
+                    <% } %>
+            </ul>
+
+        </div>
+    </div>

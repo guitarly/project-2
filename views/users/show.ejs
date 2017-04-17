@@ -1,0 +1,34 @@
+<%- contentFor('show-user') %>
+
+    <div class="container">
+        <div class="text-center">
+
+            <h2>Developer: <%= currentUser.name %></h2>
+        </div>
+
+
+        <nav class="navbar nav-photo">
+            <ul class="nav navbar-nav">
+                <a class="btn btn-md btn-primary" href="/users/edit/<%=user.id; %>">Edit User Infomation</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <a class="btn btn-md btn-primary" href="/users">Back to Developers page</a>
+
+
+            </ul>
+        </nav>
+
+        <!-- show all tasks here.. -->
+
+
+
+        <br>
+        <div class="col-md-12 text-center">
+            <form action="/user/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
+                <input class="btn btn-md btn-danger " type="submit" value="Delete User">
+            </form>
+
+        </div>
+
+    </div>
