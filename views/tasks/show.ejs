@@ -1,0 +1,52 @@
+<%- contentFor('show-task') %>
+
+    <div class="container">
+        <div class="text-center">
+
+            <h3>Task</h3>
+        </div>
+
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <ul class="nav navbar-nav navbar-left">
+
+                <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+
+                <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
+
+                <li id="menu-new"><a href="/tasks/edit/<%=task.id;%>"><span class="glyphicon glyphicon-pencil"></span> Edit Task </a></li>
+            </ul>
+
+        </nav>
+
+
+
+        <div class="col-md-12 text-center">
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Task Title:</span>
+                <input type="text" class="form-control " name="title" value="<%= task.title; %>" readonly />
+            </div>
+
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Status:</span>
+                <input rows="4" type="text" name="status" id="description" class="form-control " value="<%= task.status; %>" readonly />
+            </div>
+
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Assign:</span>
+                <input type="text" class="form-control " name="userid" value="<%= user.name; %>" readonly />
+            </div>
+            <div class=" input-group col-md-10 center-div">
+                <span class="input-group-addon ">Description:</span>
+                <input rows="4" type="text" name="description" id="description" class="form-control" value="<%= task.description; %>" readonly />
+
+            </div>
+
+            <br>
+
+            <form action="/tasks/delete/<%=task.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this task?')){return false;}">
+                <input class="btn btn-md btn-danger " type="submit" value="Delete Task">
+            </form>
+        </div>
+
+
+    </div>

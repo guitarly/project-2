@@ -11,11 +11,11 @@
 
             <div class=" input-group col-md-10 center-div">
                 <span class="input-group-addon ">Task Title:      </span>
-                <input id="img" type="text" class="form-control " name="title" required />
+                <input type="text" class="form-control " name="title" required />
             </div>
             <div class=" input-group col-md-10 center-div">
                 <span class="input-group-addon ">User:</span>
-                <select class="form-control " name="userid" placeholder="User Name " />
+                <select class="form-control " name="userid" placeholder="User Name " required/>
                 <option value=""></option>
                 <% for(var i =0; i < users.length; i++) { %>
 
@@ -30,7 +30,7 @@
 
             <div class=" input-group col-md-10 center-div">
                 <span class="input-group-addon ">Description:</span>
-                <textarea rows="4" type="text" name="description" id="description" class="form-control "> </textarea>
+                <textarea rows="4" type="text" name="description" id="description" class="form-control " required></textarea>
             </div>
 
 

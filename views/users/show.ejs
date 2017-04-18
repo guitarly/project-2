@@ -37,7 +37,7 @@
 
         <!-- show all tasks here.. -->
         <div class="row table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Task Title:</th>
@@ -67,7 +67,7 @@
             </table>
             <br>
             <div class="col-md-12 text-center">
-                <form action="/user/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
+                <form action="/users/delete/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
                     <input class="btn btn-md btn-danger " type="submit" value="Delete User">
                 </form>
 

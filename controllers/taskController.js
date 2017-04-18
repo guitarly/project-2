@@ -7,10 +7,7 @@ var path = require('path');
 
 
 // Trigger from New page
-router.post('/new', function(req, res) {
-    console.log("im in the NEW task");
-
-    console.log(req.body);
+router.post('/new', ensureAuthenticated, function(req, res) {
 
     User.findById(req.body.userid, function(err, foundUser) {
         Task.create(req.body, function(err, createTask) {
@@ -23,9 +20,8 @@ router.post('/new', function(req, res) {
     });
 });
 
-
 // upload new task
-router.get('/new', function(req, res) {
+router.get('/new', ensureAuthenticated, function(req, res) {
 
     User.find({}, function(err, foundUsers) {
         res.render('./tasks/new.ejs', {
@@ -33,18 +29,104 @@ router.get('/new', function(req, res) {
             currentUser: req.session.currentuser
         });
     });
+
 });
 
-// display the main page for Photo
-router.get('/', function(req, res) {
-    Task.find({}, function(err, foundTasks) {
-        res.render('./tasks/index', {
-            tasks: foundTasks,
-            currentUser: req.session.currentuser
-        });
+// display the main page for Tasks
+router.get('/', ensureAuthenticated, function(req, res) {
 
+    Task.find({}, function(err, foundTasks) {
+        User.find({}, function(err, foundUsers) {
+
+            res.render('./tasks/index', {
+                tasks: foundTasks,
+                users: foundUsers,
+                currentUser: req.session.currentuser
+            });
+        });
     });
 });
 
+// Show one record page
+router.get('/show/:id', ensureAuthenticated, function(req, res) {
+    // User.find({}, function(err, foundUsers) {
+
+    Task.findById(req.params.id, function(err, foundTask) {
+        User.findOne({
+            'tasks._id': req.params.id
+        }, function(err, foundUser) {
+            res.render('./tasks/show', {
+                // users: foundUsers,
+                task: foundTask,
+                user: foundUser,
+                currentUser: req.session.currentuser
+            });
+
+
+        });
+    });
+
+    // });
+});
+
+
+// Delete
+router.delete('/delete/:id', ensureAuthenticated, function(req, res) {
+    Task.findByIdAndRemove(req.params.id, function() {
+        User.findOne({
+            'tasks._id': req.params.id
+        }, function(err, foundUser) {
+            foundUser.tasks.id(req.params.id).remove();
+            foundUser.save(function(err, data) {
+                res.redirect('/tasks');
+            });
+        });
+    });
+});
+
+// Go to Edit page...
+router.get('/edit/:id', ensureAuthenticated, function(req, res) {
+    User.find({}, function(err, foundUsers) {
+        Task.findById(req.params.id, function(err, foundTask) {
+            User.findOne({
+                'tasks._id': req.params.id
+            }, function(err, foundUser) {
+                res.render('./tasks/edit.ejs', {
+                    task: foundTask,
+                    user: foundUser,
+                    users: foundUsers,
+                    currentUser: req.session.currentuser
+                });
+            });
+        });
+    });
+});
+
+// back from edit page
+router.put('/edit/:id', ensureAuthenticated, function(req, res) {
+    Task.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }, function(err, updatedTask) {
+        User.findOne({
+            'tasks._id': req.params.id
+        }, function(err, foundUser) {
+            foundUser.tasks.id(req.params.id).remove();
+            foundUser.tasks.push(updatedTask);
+            foundUser.save(function(err, data) {
+                res.redirect('/tasks');
+            });
+        });
+    });
+
+});
+
+function ensureAuthenticated(req, res, next) {
+    if (req.session.currentuser) {
+        return next();
+    } else {
+        req.flash('error_msg', 'You are not logged in');
+        res.redirect('login');
+    }
+}
 
 module.exports = router;

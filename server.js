@@ -15,11 +15,11 @@ var passport = require('passport');
 var localStrategy = require('passport-local').
 Strategy;
 // ---
-
-var port = 3001;
-var mongoDBURI = "mongodb://localhost:27017/ProjectTasks";
-// var port = process.env.PORT || 3001;
-// var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectTasks';
+// 
+// var port = 3001;
+// var mongoDBURI = "mongodb://localhost:27017/ProjectTasks";
+var port = process.env.PORT || 3001;
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectTasks';
 
 var index = require('./controllers/index.js');
 var userController = require('./controllers/userController.js');

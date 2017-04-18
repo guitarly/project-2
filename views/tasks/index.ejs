@@ -19,18 +19,20 @@
 
     <!-- show all tasks here.. -->
     <div class="row table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>Task Title:</th>
                     <th>Description:</th>
                     <th>Status:</th>
+                    <th>Assigned:</th>
                 </tr>
             </thead>
             <tbody>
 
                 <% for(var i =0; i < tasks.length; i++) { %>
                     <tr>
+
                         <td>
 
                             <a href="/tasks/show/<%=tasks[i].id; %>">
@@ -43,6 +45,10 @@
                         <td>
                             <%=tasks[i].status %>
                         </td>
+                        <td>
+
+                        </td>
+
                     </tr>
                     <% } %>
             </tbody>
