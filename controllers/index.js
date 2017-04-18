@@ -21,23 +21,41 @@ router.get('/login', function(req, res) {
 });
 
 router.post("/login", function(req, res) {
-    User.findOne({
-        username: req.body.username
-    }, function(err, foundUser) {
-        if (bcrypt.compareSync(req.body.password, foundUser.password, function(err, res) {
-                if (err) {
-                    console.log('Comparison error: ', err);
+    console.log(req.body);
+    if (req.body.password) {
+        User.findOne({
+            username: req.body.username
+        }, function(err, foundUser) {
+            if (!foundUser) {
+                req.flash('error_msg', 'No User Found');
+                res.redirect('./login');
+                console.log("No User found");
+            } else {
+
+                if (bcrypt.compareSync(req.body.password, foundUser.password, function(err, res) {
+                        if (err) {
+                            req.flash('error_msg', 'Wrong password');
+                            res.redirect('./login');
+                        }
+                    })) {
+                    req.session.currentuser = foundUser;
+                    res.render('./index', {
+                        currentUser: req.session.currentuser
+                    });
+                } else {
+                    req.flash('error_msg', 'Wrong password');
+                    res.redirect('back');
                 }
-            })) {
-            req.session.currentuser = foundUser;
-            res.render('./index', {
-                currentUser: req.session.currentuser
-            });
-        } else {
-            req.flash('error_msg', 'Wrong password');
-            res.redirect('back');
-        }
-    });
+
+            }
+        });
+
+    } else {
+        req.flash('error_msg', 'Wrong password');
+        res.redirect('back');
+
+    }
+
 });
 
 
