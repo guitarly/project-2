@@ -16,7 +16,6 @@
         </ul>
     </nav>
 
-
     <!-- show all tasks here.. -->
     <div class="row table-responsive">
         <table class="table table-bordered table-hover">
@@ -29,28 +28,29 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(var i =0; i < users.length; i++) { %>
+                    <% for(var j =0; j < users[i].tasks.length; j++) { %>
+                        <tr>
 
-                <% for(var i =0; i < tasks.length; i++) { %>
-                    <tr>
+                            <td>
 
-                        <td>
+                                <a href="/tasks/show/<%=users[i].tasks[j].id; %>">
+                                    <%= users[i].tasks[j].title %>
+                                </a>
+                            </td>
+                            <td>
+                                <%=users[i].tasks[j].description;%>
+                            </td>
+                            <td>
+                                <%=users[i].tasks[j].status %>
+                            </td>
+                            <td>
+                                <%= users[i].name %>
+                            </td>
 
-                            <a href="/tasks/show/<%=tasks[i].id; %>">
-                                <%=tasks[i].title;%>
-                            </a>
-                        </td>
-                        <td>
-                            <%=tasks[i].description;%>
-                        </td>
-                        <td>
-                            <%=tasks[i].status %>
-                        </td>
-                        <td>
-
-                        </td>
-
-                    </tr>
-                    <% } %>
+                        </tr>
+                        <% } %>
+                            <% } %>
             </tbody>
         </table>
     </div>
