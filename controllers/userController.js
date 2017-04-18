@@ -46,9 +46,9 @@ router.get('/show/:id', ensureAuthenticated, function(req, res) {
 //     });
 // });
 
+// Can delete user - but not any task that belong to the user.
 router.delete('/delete/:id', ensureAuthenticated, function(req, res) {
     User.findByIdAndRemove(req.params.id, function(err, foundUser) {
-        console.log(foundUser);
         res.redirect('/users');
     });
 

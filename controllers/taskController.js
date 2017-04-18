@@ -32,7 +32,7 @@ router.get('/new', ensureAuthenticated, function(req, res) {
 
 });
 
-// display the main page for Tasks
+// display the main page for Tasks which are assinged
 router.get('/', ensureAuthenticated, function(req, res) {
 
     Task.find({}, function(err, foundTasks) {
@@ -47,7 +47,7 @@ router.get('/', ensureAuthenticated, function(req, res) {
     });
 });
 
-// Testing .. display tasks which is not assigned yet
+// display tasks which is not assigned yet
 router.get('/nonassignedtask', ensureAuthenticated, function(req, res) {
     User.find({}, function(err, foundUsers) {
         var userArrayId = [];
@@ -130,11 +130,24 @@ router.put('/edit/:id', ensureAuthenticated, function(req, res) {
         User.findOne({
             'tasks._id': req.params.id
         }, function(err, foundUser) {
-            foundUser.tasks.id(req.params.id).remove();
-            foundUser.tasks.push(updatedTask);
-            foundUser.save(function(err, data) {
-                res.redirect('/tasks');
-            });
+            if (foundUser) {
+                foundUser.tasks.id(req.params.id).remove();
+                foundUser.tasks.push(updatedTask);
+                foundUser.save(function(err, data) {
+                    res.redirect('/tasks');
+                });
+
+            } else {
+                User.findById(req.body.userid, function(err, foundUser) {
+                    foundUser.tasks.push(updatedTask);
+                    foundUser.save(function(err, data) {
+                        res.redirect('/tasks');
+                    });
+
+                });
+
+            };
+
         });
     });
 
