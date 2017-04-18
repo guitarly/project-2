@@ -1,19 +1,20 @@
 <%- contentFor('show-task') %>
-
     <div class="container">
-        <div class="text-center">
+        <div class=" text-center ">
 
-            <h3>Task</h3>
+            <h3>Tasks</h3>
         </div>
 
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-            <ul class="nav navbar-nav navbar-left">
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded ">
+            <ul class="nav navbar-nav navbar-left ">
 
-                <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+                <li id="menu-new "><a href="/users "><span class="glyphicon glyphicon-user "></span> All Users </a></li>
 
-                <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> All Tasks </a></li>
+                <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Assigned) </a></li>
+                <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Not Assigned ) </a></li>
 
-                <li id="menu-new"><a href="/tasks/edit/<%=task.id;%>"><span class="glyphicon glyphicon-pencil"></span> Edit Task </a></li>
+                <li id="menu-new "><a href="/tasks/edit/<%=task.id;%>"><span class="glyphicon glyphicon-pencil"></span> Edit Task </a>
+                </li>
             </ul>
 
         </nav>
@@ -33,8 +34,15 @@
 
             <div class=" input-group col-md-10 center-div">
                 <span class="input-group-addon ">Assign:</span>
-                <input type="text" class="form-control " name="userid" value="<%= user.name; %>" readonly />
+                <%if(user) {%>
+                    <input id="user_id" type="text" class="form-control" name="userid" readonly value="<%=user.name%>" />
+                    <% } else { %>
+                        <input id="user_id" type="text" class="form-control" name="userid" readonly />
+                        <%  } %>
             </div>
+
+
+
             <div class=" input-group col-md-10 center-div">
                 <span class="input-group-addon ">Description:</span>
                 <input rows="4" type="text" name="description" id="description" class="form-control" value="<%= task.description; %>" readonly />
@@ -47,6 +55,5 @@
                 <input class="btn btn-md btn-danger " type="submit" value="Delete Task">
             </form>
         </div>
-
 
     </div>

@@ -47,6 +47,27 @@ router.get('/', ensureAuthenticated, function(req, res) {
     });
 });
 
+// Testing .. display tasks which is not assigned yet
+router.get('/nonassignedtask', ensureAuthenticated, function(req, res) {
+    User.find({}, function(err, foundUsers) {
+        var userArrayId = [];
+        for (var i = 0; i < foundUsers.length; i++) {
+            userArrayId.push(foundUsers[i].id);
+        }
+        Task.find({
+            userid: {
+                $nin: userArrayId
+            }
+        }, function(err, foundTasks) {
+            res.render('./tasks/notassigned', {
+                tasks: foundTasks,
+                users: foundUsers,
+                currentUser: req.session.currentuser
+            });
+        });
+    });
+});
+
 // Show one record page
 router.get('/show/:id', ensureAuthenticated, function(req, res) {
     // User.find({}, function(err, foundUsers) {
@@ -61,7 +82,6 @@ router.get('/show/:id', ensureAuthenticated, function(req, res) {
                 user: foundUser,
                 currentUser: req.session.currentuser
             });
-
 
         });
     });

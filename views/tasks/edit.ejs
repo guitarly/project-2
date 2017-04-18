@@ -1,8 +1,11 @@
 <%- contentFor('edit-task') %>
     <h1>Edit Task</h1>
     <br>
-    <h4>Developer:
-        <%=user.name%>
+    <h4>
+      <%if(user) {%>
+        Developer:<%=user.name%>
+    <%  } %>
+
     </h4>
     <div class="row text-center ">
         <form class="" action="/tasks/edit/<%=task.id%>?_method=PUT" method="POST">
@@ -26,38 +29,58 @@
                     </select>
                 </div>
 
+                <%if(user) {%>
 
-
-                <div class=" input-group col-md-10 center-div">
-                    <span class="input-group-addon ">Assignee:</span>
-                    <select class="form-control " name="userid" placeholder="User Name " required value="
+                    <div class=" input-group col-md-10 center-div">
+                        <span class="input-group-addon ">Assignee:</span>
+                        <select class="form-control " name="userid" placeholder="User Name " required value="
                   <%=user.name %>" />
-                    <% for(var i =0; i < users.length; i++) { %>
-                        <option value="<%=users[i].id%>" <% if(user.username===users[i].username ) { %>
-                            selected
-                            <%}%>
-                                >
-                                <%=users[i].name%>
-                        </option>
-                        <% } %>
+                        <% for(var i =0; i < users.length; i++) { %>
+                            <option value="<%=users[i].id%>" <% if(user.username===users[i].username ) { %>
+                                selected
+                                <%}%>
+                                    >
+                                    <%=users[i].name%>
+                            </option>
+                            <% } %>
 
-                            </select>
-                </div>
+                                </select>
+                    </div>
+                    <% } else { %>
+                        <div class=" input-group col-md-10 center-div">
+                            <span class="input-group-addon ">Assignee:</span>
+                            <select class="form-control " name="userid" placeholder="User Name " required />
+                            <option value=""></option>
+                            <% for(var i =0; i < users.length; i++) { %>
+                                <option value="<%=users[i].id%>">
+                                    <%=users[i].name%>
+                                </option>
+                                <% } %>
+
+                                    </select>
+                        </div>
+                        <%  } %>
 
 
-                <div class=" input-group col-md-10 center-div">
-                    <span class="input-group-addon ">Description:</span>
-                    <input type="text" name="description" id="description" class="form-control " required value="<%= task.description; %>" />
-                </div>
+                            <div class=" input-group col-md-10 center-div">
+                                <span class="input-group-addon ">Description:</span>
+                                <input type="text" name="description" id="description" class="form-control " required value="<%= task.description; %>" />
+                            </div>
 
 
-                <br>
+                            <br>
 
             </div>
 
             <br>
             <button type="submit " class="btn btn-primary ">Save</button>
-            <a href="/tasks" class="btn btn-warning ">Cancel</a>
+            <%if(user) {%>
+                <a href="/tasks" class="btn btn-warning ">Cancel</a>
+                <% } else { %>
+                    <a href="/tasks/nonassignedtask" class="btn btn-warning ">Cancel</a>
+                    <%  } %>
+
+
 
 
         </form>

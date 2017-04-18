@@ -9,9 +9,7 @@ var path = require('path');
 
 // display the main page for user
 router.get('/', ensureAuthenticated, function(req, res) {
-    console.log("in index... users");
     User.find({}, function(err, foundUsers) {
-
         res.render('./users/index', {
             users: foundUsers,
             currentUser: req.session.currentuser
@@ -31,21 +29,29 @@ router.get('/show/:id', ensureAuthenticated, function(req, res) {
 
 
 // Delete
+// router.delete('/delete/:id', ensureAuthenticated, function(req, res) {
+//     User.findByIdAndRemove(req.params.id, function(err, foundUser) {
+//         var taskArrayId = [];
+//         for (var i = 0; i < foundUser.tasks.length; i++) {
+//             taskArrayId.push(foundUser.tasks[i]._id);
+//         }
+//         Task.remove({
+//             _id: {
+//                 $in: taskArrayId
+//             }
+//         }, function(err, data) {
+//             res.redirect('/users');
+//         });
+//
+//     });
+// });
+
 router.delete('/delete/:id', ensureAuthenticated, function(req, res) {
     User.findByIdAndRemove(req.params.id, function(err, foundUser) {
-        var taskArrayId = [];
-        for (var i = 0; i < foundUser.tasks.length; i++) {
-            taskArrayId.push(foundUser.tasks[i]._id);
-        }
-        Task.remove({
-            _id: {
-                $in: taskArrayId
-            }
-        }, function(err, data) {
-            res.redirect('/users');
-        });
-
+        console.log(foundUser);
+        res.redirect('/users');
     });
+
 });
 
 

@@ -4,11 +4,13 @@
         <h2>Task Assignments</h2>
         <ul class="nav navbar-nav navbar-left">
             <% if(currentUser.role === 'Project Manager') { %>
-                <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add Tasks </a></li>
+                <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task </a></li>
                 <% } %>
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
+
+            <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Not Assigned ) </a></li>
 
             <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
 
