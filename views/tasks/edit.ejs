@@ -36,11 +36,12 @@
                         <select class="form-control " name="userid" placeholder="User Name " required value="
                   <%=user.name %>" />
                         <% for(var i =0; i < users.length; i++) { %>
-                            <option value="<%=users[i].id%>" <% if(user.username===users[i].username ) { %>
+                            <option value="<%=users[i]._id%>" <% if(user.username===users[i].username ) { %>
                                 selected
                                 <%}%>
                                     >
-                                    <%=users[i].name%>
+                                    <%=users[i].name%>,
+                                        <%=users[i]._id%>,
                             </option>
                             <% } %>
 

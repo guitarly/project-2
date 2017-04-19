@@ -127,17 +127,41 @@ router.put('/edit/:id', ensureAuthenticated, function(req, res) {
     Task.findByIdAndUpdate(req.params.id, req.body, {
         new: true
     }, function(err, updatedTask) {
+
         User.findOne({
             'tasks._id': req.params.id
         }, function(err, foundUser) {
+            if (err) {
+                throw err;
+            }
             if (foundUser) {
+                // remove the item first from user
                 foundUser.tasks.id(req.params.id).remove();
-                foundUser.tasks.push(updatedTask);
                 foundUser.save(function(err, data) {
-                    res.redirect('/tasks');
+                    if (err) {
+                        throw err;
+                    }
+                });
+                // find user again...
+                User.findOne({
+                    _id: req.body.userid
+                }, function(err, foundUser1) {
+
+                    foundUser1.tasks.push(updatedTask);
+                    foundUser1.save(function(err, data) {
+
+                        if (err) {
+                            throw err;
+                        }
+                        res.redirect('/tasks');
+                    });
                 });
 
+
+
             } else {
+                // if there is a task which no user assigned.
+                console.log("NOT found user ..");
                 User.findById(req.body.userid, function(err, foundUser) {
                     foundUser.tasks.push(updatedTask);
                     foundUser.save(function(err, data) {
