@@ -27,14 +27,14 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <% if(!currentUser) { %>
-                        <li role="presentation"><a href="/login">Login</a></li>
+                        <li role="presentation"><a href="/login"><span class="glyphicon glyphicon-log-out"></span>  Login</a></li>
                         <li role="presentation"><a href="/register">Register</a></li>
                         <% } %>
                             <% if(currentUser) { %>
-                                <li role="presentation"><a href="/index">Dashboard</a></li>
+                                <li role="presentation"><a href="/index"><span class="glyphicon glyphicon-tasks"></span> Dashboard</a></li>
                                 <li class="nav-item">
 
-                                    <li role="presentation"><a href="/logout">Logout</a></li>
+                                    <li role="presentation"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
 
                                     <li role="presentation">

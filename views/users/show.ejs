@@ -11,7 +11,7 @@
 
             <ul class="nav navbar-nav navbar-left">
                 <li id="menu-new">
-                    <a href="/users/edit/<%=user.id; %>"><span class="glyphicon glyphicon-user"></span>Edit User Infomation</a>
+                    <a href="/users/edit/<%=user.id; %>"><span class="glyphicon glyphicon-edit"></span> Edit User Infomation</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -26,7 +26,8 @@
 
         <!-- show all tasks here.. -->
         <div class="row table-responsive">
-            <table class="table table-bordered table-hover">
+            <!-- <table class="table table-bordered table-hover"> -->
+            <table id="table-all" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Task Title:</th>
