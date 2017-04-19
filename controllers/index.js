@@ -21,7 +21,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post("/login", function(req, res) {
-    console.log(req.body);
+
     if (req.body.password) {
         User.findOne({
             username: req.body.username
@@ -126,8 +126,13 @@ router.get('/logout', function(req, res) {
 
 // Dashboard
 router.get('/index', ensureAuthenticated, function(req, res) {
-    res.render('index', {
-        currentUser: req.session.currentuser
+    User.findOne({
+        username: req.session.currentuser.username
+    }, function(err, foundUser) {
+        req.session.currentuser = foundUser;
+        res.render('index', {
+            currentUser: foundUser
+        });
     });
 });
 

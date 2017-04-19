@@ -11,3 +11,40 @@
                     <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Not Assigned ) </a></li>
         </ul>
     </nav>
+
+    <br>
+    <table id="table-all" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Task Title:</th>
+                <th>Description:</th>
+                <th>Status:</th>
+                <th>Assigned:</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(var i = 0; i < currentUser.tasks.length ; i++ ) { %>
+                <tr>
+                    <td>
+                        <a href="/tasks/show/<%=currentUser.tasks[i]._id; %>">
+                            <%= currentUser.tasks[i].title %>
+                        </a>
+                    </td>
+                    <td>
+                        <%= currentUser.tasks[i].description %>
+                    </td>
+                    <td>
+                        <%= currentUser.tasks[i].status %>
+                    </td>
+                    <td>
+                        <%= currentUser.name %>
+                    </td>
+
+                </tr>
+                <%  } %>
+
+        </tbody>
+    </table>
+
+    <!-- </div> -->
