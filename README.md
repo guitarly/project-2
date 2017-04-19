@@ -11,6 +11,8 @@ Task Assignment Project Application:
 
   On the Dashboard, users can choose display All Users, Tasks (Assigned) or Tasks (Not Assigned).   
 
+	Dashboard: display all tasks which users got assigned.
+
   All Users:  - display all users.
   Tasks (Assigned) - Display Tasks which already assigned to users.
   Tasks (Not Assigned) - Display Tasks which is not assigned to any users yet.
@@ -20,8 +22,8 @@ Task Assignment Project Application:
 
   Users can change status of the task. (Block, working, testing, completed).
 
-  Users can delete a task.  The task will be remove it from the model, and from the user which assigned it.
+  Users cannot delete a task except the Project Manger.  The task will be remove it from the model, and from the user which assigned it.
 
-  The user can remove from the application.  The user will be remove it from the model, but all tasks which assigned to the user will be in un-assigned tasks box.
+  The user cannot remove the account from the application except the project manager.  Once the user removed from the model, but all tasks which assigned to the user will be in un-assigned tasks box.
 
   The PM can go into the un-assigned tasks to assign to other users.
