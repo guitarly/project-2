@@ -131,3 +131,8 @@ footer {
   padding: 10px;
   /*border: 1px solid gray;*/
 }
+
+#logo {
+  width: 20%;
+  height: 30%;
+}

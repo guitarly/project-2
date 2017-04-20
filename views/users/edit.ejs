@@ -1,52 +1,56 @@
 <%- contentFor('edit-user') %>
-    <h1>Edit Information</h1>
+  <h1>Edit Information</h1>
+
+  <div class="container">
+
 
 
     <% if(errors) { %>
-        <% for(var i = 0; i < errors.length; i++)  { %>
-            <div class="alert alert-danger">
-                <p>
-                    <%= errors[i].msg %>
-                </p>
+      <% for(var i = 0; i < errors.length; i++)  { %>
+        <div class="alert alert-danger">
+          <p>
+            <%= errors[i].msg %>
+          </p>
+        </div>
+        <% } %>
+          <%  } %>
+
+            <div class="row text-center ">
+              <form class="" action="/users/edit/<%=user.id%>?_method=PUT" method="POST">
+                <fieldset>
+
+                  <div class=" input-group col-md-12 center-div">
+                    <!-- Username -->
+                    <span class="input-group-addon ">Name:</span>
+                    <input id="name" type="text " class="form-control " name="name" placeholder="Name " required value="<%=user.name; %>" />
+                  </div>
+                  <br>
+                  <div class=" input-group col-md-12 center-div">
+                    <span class="input-group-addon ">Role:</span>
+                    <select class="form-control " name="role" placeholder="Select user role" />
+                    <option value=""></option>
+                    <option value="Project Manager" <% if(user.role==='Project Manager' ) { %>
+                      selected
+                      <%}%>
+                        >Project Manager</option>
+                    <option value="Tester" <% if(user.role==='Tester' ) { %>
+                      selected
+                      <%}%> >Tester</option>
+                    <option value="Developer" <% if(user.role==='Developer' ) { %>
+                      selected
+                      <%}%> > Developer
+                    </option>
+
+                    </select>
+                  </div>
+                  <br>
+
+                  <br>
+
+                  <button type="submit " class="btn btn-primary ">Save</button>
+                  <a href="/users" class="btn btn-warning ">Cancel</a>
+                </fieldset>
+
+              </form>
             </div>
-            <% } %>
-                <%  } %>
-
-                    <div class="row text-center ">
-                        <form class="" action="/users/edit/<%=user.id%>?_method=PUT" method="POST">
-                            <fieldset>
-
-                                <div class=" input-group col-md-12 center-div">
-                                    <!-- Username -->
-                                    <span class="input-group-addon ">Name:</span>
-                                    <input id="name" type="text " class="form-control " name="name" placeholder="Name " required value="<%=user.name; %>" />
-                                </div>
-                                <br>
-                                <div class=" input-group col-md-12 center-div">
-                                    <span class="input-group-addon ">Role:</span>
-                                    <select class="form-control " name="role" placeholder="Select user role" />
-                                    <option value=""></option>
-                                    <option value="Project Manager" <% if(user.role==='Project Manager' ) { %>
-                                        selected
-                                        <%}%>
-                                            >Project Manager</option>
-                                    <option value="Tester" <% if(user.role==='Tester' ) { %>
-                                        selected
-                                        <%}%> >Tester</option>
-                                    <option value="Developer" <% if(user.role==='Developer' ) { %>
-                                        selected
-                                        <%}%> > Developer
-                                    </option>
-
-                                    </select>
-                                </div>
-                                <br>
-
-                                <br>
-
-                                <button type="submit " class="btn btn-primary ">Save</button>
-                                <a href="/users" class="btn btn-warning ">Cancel</a>
-                            </fieldset>
-
-                        </form>
-                    </div>
+  </div>
