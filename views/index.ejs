@@ -1,50 +1,52 @@
 <%- contentFor('dashboard') %>
-  <h2 class="page-header">Dashboard</h2>
+  <div class="container">
+    <!-- 
+    <h2 class="page-header">Dashboard</h2> -->
 
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <ul class="nav navbar-nav navbar-left">
-      <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
-      <% if(currentUser.role === 'Project Manager') { %>
-        <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task</a></li>
-        <% } %>
-          <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Assigned) </a></li>
-          <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-file"></span> Tasks (Not Assigned ) </a></li>
-    </ul>
-  </nav>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <ul class="nav navbar-nav navbar-left">
+        <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+        <% if(currentUser.role === 'Project Manager') { %>
+          <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task</a></li>
+          <% } %>
+            <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Assigned) </a></li>
+            <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-file"></span> Tasks (Not Assigned ) </a></li>
+      </ul>
+    </nav>
 
-  <br>
-  <table id="table-all" class="display table-bordered" cellspacing="0" width="100%">
-    <thead>
-      <tr>
-        <th>Task Title:</th>
-        <th>Description:</th>
-        <th>Status:</th>
-        <th>Assigned:</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <% for(var i = 0; i < currentUser.tasks.length ; i++ ) { %>
+    <br>
+    <table id="table-all" class="display table-bordered" cellspacing="0" width="100%">
+      <thead>
         <tr>
-          <td>
-            <a href="/tasks/show/<%=currentUser.tasks[i]._id; %>">
-              <%= currentUser.tasks[i].title %>
-            </a>
-          </td>
-          <td>
-            <%= currentUser.tasks[i].description %>
-          </td>
-          <td>
-            <%= currentUser.tasks[i].status %>
-          </td>
-          <td>
-            <%= currentUser.name %>
-          </td>
-
+          <th>Task Title:</th>
+          <th>Description:</th>
+          <th>Status:</th>
+          <th>Assigned:</th>
         </tr>
-        <%  } %>
+      </thead>
+      <tbody>
 
-    </tbody>
-  </table>
+        <% for(var i = 0; i < currentUser.tasks.length ; i++ ) { %>
+          <tr>
+            <td>
+              <a href="/tasks/show/<%=currentUser.tasks[i]._id; %>">
+                <%= currentUser.tasks[i].title %>
+              </a>
+            </td>
+            <td>
+              <%= currentUser.tasks[i].description %>
+            </td>
+            <td>
+              <%= currentUser.tasks[i].status %>
+            </td>
+            <td>
+              <%= currentUser.name %>
+            </td>
 
-  <!-- </div> -->
+          </tr>
+          <%  } %>
+
+      </tbody>
+    </table>
+
+  </div>
