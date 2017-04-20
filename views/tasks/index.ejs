@@ -1,59 +1,59 @@
 <%- contentFor('display-all-tasks') %>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <h2>Task Assignments</h2>
-        <ul class="nav navbar-nav navbar-left">
-            <% if(currentUser.role === 'Project Manager') { %>
-                <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task </a></li>
-                <% } %>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <h2>Task Assignments</h2>
+    <ul class="nav navbar-nav navbar-left">
+      <% if(currentUser.role === 'Project Manager') { %>
+        <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task </a></li>
+        <% } %>
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
 
-            <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-file"></span> Tasks (Not Assigned ) </a></li>
+      <li id="menu-new"><a href="/tasks/nonassignedtask"><span class="glyphicon glyphicon-file"></span> Tasks (Not Assigned ) </a></li>
 
-            <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+      <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
 
 
-        </ul>
-    </nav>
+    </ul>
+  </nav>
 
-    <!-- show all tasks here.. -->
-    <div class="row table-responsive">
-        <!-- <table class="table table-bordered table-hover"> -->
-        <table id="table-all" class="display" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Task Title:</th>
-                    <th>Description:</th>
-                    <th>Status:</th>
-                    <th>Assigned:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(var i =0; i < users.length; i++) { %>
-                    <% for(var j =0; j < users[i].tasks.length; j++) { %>
-                        <tr>
+  <!-- show all tasks here.. -->
+  <div class="row table-responsive">
+    <!-- <table class="table table-bordered table-hover"> -->
+    <table id="table-all" class="display table-bordered" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Task Title:</th>
+          <th>Description:</th>
+          <th>Status:</th>
+          <th>Assigned:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i =0; i < users.length; i++) { %>
+          <% for(var j =0; j < users[i].tasks.length; j++) { %>
+            <tr>
 
-                            <td>
+              <td>
 
-                                <a href="/tasks/show/<%=users[i].tasks[j].id; %>">
-                                    <%= users[i].tasks[j].title %>
-                                </a>
-                            </td>
-                            <td>
-                                <%=users[i].tasks[j].description;%>
-                            </td>
-                            <td>
-                                <%=users[i].tasks[j].status %>
-                            </td>
-                            <td>
-                                <%= users[i].name %>
-                            </td>
+                <a href="/tasks/show/<%=users[i].tasks[j].id; %>">
+                  <%= users[i].tasks[j].title %>
+                </a>
+              </td>
+              <td>
+                <%=users[i].tasks[j].description;%>
+              </td>
+              <td>
+                <%=users[i].tasks[j].status %>
+              </td>
+              <td>
+                <%= users[i].name %>
+              </td>
 
-                        </tr>
-                        <% } %>
-                            <% } %>
-            </tbody>
-        </table>
-    </div>
+            </tr>
+            <% } %>
+              <% } %>
+      </tbody>
+    </table>
+  </div>

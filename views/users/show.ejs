@@ -1,68 +1,68 @@
 <%- contentFor('show-user') %>
 
-    <div class="container">
-        <div class="text-center">
+  <div class="container">
+    <div class="text-center">
 
-            <h2>Developer: <%= user.name %></h2>
-        </div>
-
-
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-
-            <ul class="nav navbar-nav navbar-left">
-                <li id="menu-new">
-                    <a href="/users/edit/<%=user.id; %>"><span class="glyphicon glyphicon-edit"></span> Edit User Infomation</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-
-                <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
-
-
-
-
-            </ul>
-        </nav>
-
-        <!-- show all tasks here.. -->
-        <div class="row table-responsive">
-            <!-- <table class="table table-bordered table-hover"> -->
-            <table id="table-all" class="display" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Task Title:</th>
-                        <th>Description:</th>
-                        <th>Status:</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <% for(var i =0; i < user.tasks.length; i++) { %>
-                        <tr>
-                            <td>
-
-                                <a href="/tasks/show/<%=user.tasks[i].id; %>">
-                                    <%= user.tasks[i].title %>
-                                </a>
-                            </td>
-                            <td>
-                                <%= user.tasks[i].description %>
-                            </td>
-                            <td>
-                                <%= user.tasks[i].status %>
-                            </td>
-                        </tr>
-                        <% } %>
-                </tbody>
-            </table>
-            <br>
-            <div class="col-md-12 text-center">
-                <% if(currentUser.role === 'Project Manager') { %>
-                    <form action="/users/delete/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
-                        <input class="btn btn-md btn-danger " type="submit" value="Delete User">
-                    </form>
-                    <% } %>
-            </div>
-        </div>
-
+      <h2>Developer: <%= user.name %></h2>
     </div>
+
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+      <ul class="nav navbar-nav navbar-left">
+        <li id="menu-new">
+          <a href="/users/edit/<%=user.id; %>"><span class="glyphicon glyphicon-edit"></span> Edit User Infomation</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
+
+
+
+
+      </ul>
+    </nav>
+
+    <!-- show all tasks here.. -->
+    <div class="row table-responsive">
+      <!-- <table class="table table-bordered table-hover"> -->
+      <table id="table-all" class="display table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Task Title:</th>
+            <th>Description:</th>
+            <th>Status:</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i =0; i < user.tasks.length; i++) { %>
+            <tr>
+              <td>
+
+                <a href="/tasks/show/<%=user.tasks[i].id; %>">
+                  <%= user.tasks[i].title %>
+                </a>
+              </td>
+              <td>
+                <%= user.tasks[i].description %>
+              </td>
+              <td>
+                <%= user.tasks[i].status %>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+      <br>
+      <div class="col-md-12 text-center">
+        <% if(currentUser.role === 'Project Manager') { %>
+          <form action="/users/delete/<%=user.id; %>?_method=DELETE" method="POST" onSubmit="if(!confirm('Do you really want to delete this user?')){return false;}">
+            <input class="btn btn-md btn-danger " type="submit" value="Delete User">
+          </form>
+          <% } %>
+      </div>
+    </div>
+
+  </div>

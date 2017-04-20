@@ -1,58 +1,58 @@
 <%- contentFor('display-tasks-not-assign') %>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <h2>Tasks - Not Assigned</h2>
-        <ul class="nav navbar-nav navbar-left">
-            <% if(currentUser.role === 'Project Manager') { %>
-                <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task </a></li>
-                <% } %>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <h2>Tasks - Not Assigned</h2>
+    <ul class="nav navbar-nav navbar-left">
+      <% if(currentUser.role === 'Project Manager') { %>
+        <li id="menu-new"><a href="/tasks/new"><span class="glyphicon glyphicon-plus"></span> Add New Task </a></li>
+        <% } %>
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
 
-            <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Assigned) </a></li>
+      <li id="menu-new"><a href="/tasks"><span class="glyphicon glyphicon-folder-open"></span> Tasks (Assigned) </a></li>
 
-            <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
-
-
-        </ul>
-    </nav>
+      <li id="menu-new"><a href="/users"><span class="glyphicon glyphicon-user"></span> All Users </a></li>
 
 
-    <!-- show all tasks here.. -->
-    <div class="row table-responsive">
-        <!-- <table class="table table-bordered table-hover"> -->
-        <table id="table-all" class="display" cellspacing="0" width="100%">
-            <thead>Tasks Are Not Assigned
-                <tr>
-                    <th>Task Title:</th>
-                    <th>Description:</th>
-                    <th>Status:</th>
-                    <th>Assigned:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(var j =0; j < tasks.length; j++) { %>
-                    <tr>
+    </ul>
+  </nav>
 
-                        <td>
 
-                            <a href="/tasks/show/<%=tasks[j].id; %>">
-                                <%= tasks[j].title %>
-                            </a>
-                        </td>
-                        <td>
-                            <%=tasks[j].description;%>
-                        </td>
-                        <td>
-                            <%=tasks[j].status %>
-                        </td>
-                        <td>
-                            "Not Assigned"
-                        </td>
+  <!-- show all tasks here.. -->
+  <div class="row table-responsive">
+    <!-- <table class="table table-bordered table-hover"> -->
+    <table id="table-all" class="display table-bordered" cellspacing="0" width="100%">
+      <thead>Tasks Are Not Assigned
+        <tr>
+          <th>Task Title:</th>
+          <th>Description:</th>
+          <th>Status:</th>
+          <th>Assigned:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var j =0; j < tasks.length; j++) { %>
+          <tr>
 
-                    </tr>
-                    <% } %>
-            </tbody>
-        </table>
-    </div>
+            <td>
+
+              <a href="/tasks/show/<%=tasks[j].id; %>">
+                <%= tasks[j].title %>
+              </a>
+            </td>
+            <td>
+              <%=tasks[j].description;%>
+            </td>
+            <td>
+              <%=tasks[j].status %>
+            </td>
+            <td>
+              "Not Assigned"
+            </td>
+
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
