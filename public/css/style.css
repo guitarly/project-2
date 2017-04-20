@@ -112,10 +112,10 @@ body {
 }*/
 
 footer {
-  display: flex;
-  !important;
+  display: flex !important;
   text-align: center;
   align-items: center;
+  align-content: center;
   bottom: 0%;
   width: 100%;
   position: relative;
