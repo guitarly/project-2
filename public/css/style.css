@@ -113,6 +113,7 @@ body {
 
 footer {
   display: flex;
+  !important;
   text-align: center;
   align-items: center;
   bottom: 0%;
