@@ -112,16 +112,18 @@ body {
 }*/
 
 footer {
+  text-align: center !important;
   display: flex !important;
-  text-align: center;
   align-items: center;
   align-content: center;
   bottom: 0%;
   width: 100%;
   position: relative;
-  color: #888;
-  background: #222;
+  color: black;
+  background: #e4e4e4;
   padding-top: 10px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .body-div {
